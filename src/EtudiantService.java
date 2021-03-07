@@ -6,26 +6,36 @@ import java.util.ArrayList;
 public class EtudiantService {
 	
 	
-	boolean inscription (int matricule, String nom, String prénom, String email,String pwd, int id_universite) throws SQLException	
+	 private IEtudRep EtudRep;
+	 private IUnivRep UnivRep;
+	
+	 public EtudiantService(IEtudRep EtudRep ,IUnivRep UnivRep) {
+			super();
+			this.EtudRep = EtudRep;
+			this.UnivRep = UnivRep;
+	  }
+	 
+	 
+	 
+	boolean inscription (Etudiant etud , int ID_univ ) throws SQLException	
 	{
-		EtudiantRepository StudRep= new EtudiantRepository();
-	    UniversiteRepository UnivRep= new UniversiteRepository();
-	    Etudiant stud = new Etudiant(matricule, nom, prénom, email,pwd,id_universite);
-	    Universite univ=UnivRep.GetById(id_universite);
+	    Universite univ = UnivRep.GetById(ID_univ) ;
+	    System.out.println("Log: début de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());
 	    
-	    System.out.println("Log: début de l'opération d'ajout de l'étudiant avec matricule "+matricule);
 	    
-	    if(email == null || email.length() == 0)
+	   
+	    
+	    if(etud.getEmail() == null || etud.getEmail().length() == 0)
 	    {
 	    	return false;
 	    }
 	    
-	    if (StudRep.Exists(matricule))
+	    if (EtudRep.Exists(etud.getMatricule()))
 	    {
 	        return false;
 	    }
 	    
-		if (StudRep.Exists(email))
+	    if (EtudRep.Exists(etud.getEmail()))
 	    {
 	        return false;
 	    }
@@ -42,7 +52,7 @@ public class EtudiantService {
 	     }                           
 	     
 		 StudRep.add(stud);
-		 System.out.println("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+matricule);
+		 System.out.println("Log: Fin de l'opération d'ajout de l'étudiant avec matricule "+etud.getMatricule());
 		 return true;
 	    
 		
