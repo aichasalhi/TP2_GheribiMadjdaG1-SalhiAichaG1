@@ -6,10 +6,10 @@ import java.sql.Statement;
 
 public class EtudiantRepository  implements IEtudRep {
 	
-	private IDBConnexion BDD ;
+	private IDBConnection BDD ;
 	private static Statement stmt;
 	
-	public EtudiantRepository(InterfaceDBConnexion BDD){
+	public EtudiantRepository(IDBConnection BDD){
 		this.BDD = BDD;
 		}	
 		
@@ -110,10 +110,19 @@ public class EtudiantRepository  implements IEtudRep {
 			}
 			return false;
 			
-		
+			@Override
+			public boolean Existe_Email_Matricule(int Matricule, String Email) {
+
+				return this.Exists(Matricule) || this.Exists(Email) || Email.length() == 0 || Email == null; 
+
+			}
+
+	
 	  
 	  
 	
 	}
+
+
 
 }

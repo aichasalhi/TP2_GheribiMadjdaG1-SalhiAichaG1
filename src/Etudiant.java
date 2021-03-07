@@ -1,5 +1,5 @@
 
-public class Etudiant {
+public class Etudiant implements IEtud {
 
 		private int matricule;
 	    private String nom;
@@ -11,7 +11,7 @@ public class Etudiant {
 	    private int id_universite;
 	    
 	   
-		public Etudiant(int matricule, String nom, String prenom, String email,String pwd, int id_universite) {
+	    public Etudiant(int matricule, String nom, String prenom, String email,String pwd, int id_universite, int nbLivreMensuel_Autorise,  int nbLivreEmprunte ) {
 			
 			this.matricule = matricule;
 			this.nom = nom;
@@ -19,6 +19,8 @@ public class Etudiant {
 			this.email = email;
 			this.pwd = pwd;
 			this.id_universite = id_universite;
+			this.nbLivreMensuel_Autorise = nbLivreMensuel_Autorise ;
+			this.nbLivreEmprunte = nbLivreEmprunte ;
 		}
 
 
@@ -26,7 +28,11 @@ public class Etudiant {
 			return matricule;
 		}
 
+		  public void bonus(int nb){
 
+				this.nbLivreMensuel_Autorise +=nb ;
+			}
+		  
 		public void setMatricule(int matricule) {
 			this.matricule = matricule;
 		}

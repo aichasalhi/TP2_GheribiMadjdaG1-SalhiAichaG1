@@ -58,4 +58,22 @@ ResultSet rs = stmt.executeQuery(sql);
 	}
       return null;
 }
+@Override
+public int NbrLivreAutorise(int id_univ) {
+	// TODO Auto-generated method stub
+	Universite Univ =  GetById(id_univ);
+	if (Univ.getPack() == TypePackage.Standard)
+     {
+         return 10;
+     }
+     else if (Univ.getPack() == TypePackage.Premium)
+     {
+    	 return 10*2;
+    	 }     
+
+	return 0;
+}
+
+
+
 }
