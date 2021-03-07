@@ -10,11 +10,17 @@ public class DBConnection implements IDBConnexion{
 		String passwd = "";
 	    private Connection conn;
 
+	    private static DBConnection db;
 	   
-	    public DBConnection() throws SQLException {
-			conn=DriverManager.getConnection(url, user,passwd);
+	    private DBConnection() {
 		}
 
+      public static DBConnection getInstance(){
+		if(db == null){
+			db = new DBConnection();	
+		}
+		return db;
+	}
 	    
 	    public Connection getConn() {
 			return conn;

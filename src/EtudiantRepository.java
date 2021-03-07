@@ -14,7 +14,14 @@ public class EtudiantRepository  implements IEtudRep {
 		}	
 		
 	
+<<<<<<< HEAD
 		DBConnection BD= new DBConnection();
+=======
+	void add(Etudiant E) throws SQLException
+	{
+
+		DBConnection BD=DBConnection.getInstance();
+>>>>>>> 71d539716fa6d574752e6e615c3bf7d662c0ecc5
 		Connection connect=BD.getConn();
 		
 		@Override
@@ -41,7 +48,16 @@ public class EtudiantRepository  implements IEtudRep {
  public	boolean Exists(String email){
 	try{
 
+<<<<<<< HEAD
 		stmt = BDD.getConn().createStatement();
+=======
+	boolean Exists(String email) throws SQLException	
+	{
+		DBConnection BD=DBConnection.getInstance();
+		Connection connect=BD.getConn();
+		
+		Statement stmt = connect.createStatement();
+>>>>>>> 71d539716fa6d574752e6e615c3bf7d662c0ecc5
 		String sql = "select * from etudiant where email='"+ email+"'";
 		boolean rs = stmt.execute(sql);
 		
@@ -62,6 +78,7 @@ public class EtudiantRepository  implements IEtudRep {
   @Override
 	public boolean Exists(int mat) 	
 	{
+<<<<<<< HEAD
 	  try {	
 			stmt = BDD.getConn().createStatement();
 			String sql = "select * from etudiant where matricule="+ mat;
@@ -77,6 +94,19 @@ public class EtudiantRepository  implements IEtudRep {
 
 			}catch(SQLException e){
 				e.printStackTrace();
+=======
+		DBConnection BD=DBConnection.getInstance();
+		Connection connect=BD.getConn();
+		
+		Statement stmt = connect.createStatement();
+		String sql = "select * from etudiant where matricule="+ mat;
+		boolean rs = stmt.execute(sql);
+		
+		if (rs){
+			System.out.println("logBD--- :etudiant avec ce matricule existe déja dans la BD  " + mat);
+			connect.close();
+			return true;
+>>>>>>> 71d539716fa6d574752e6e615c3bf7d662c0ecc5
 			}
 			return false;
 			
