@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 
 public interface IEtudRep {
 	public abstract void  add(Etudiant e);

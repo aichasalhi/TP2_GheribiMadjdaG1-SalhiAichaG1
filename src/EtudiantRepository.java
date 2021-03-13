@@ -4,25 +4,20 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class EtudiantRepository  implements IEtudRep {
+ abstract class EtudiantRepository  implements IEtudRep {
 	
 	private IDBConnection BDD ;
 	private static Statement stmt;
+	private Ijournal j;
 	
-	public EtudiantRepository(IDBConnection BDD){
+	public EtudiantRepository(IDBConnection BDD, Ijournal j){
 		this.BDD = BDD;
+		this.j = j ;
+
 		}	
 		
 	
-<<<<<<< HEAD
-		DBConnection BD= new DBConnection();
-=======
-	void add(Etudiant E) throws SQLException
-	{
 
-		DBConnection BD=DBConnection.getInstance();
->>>>>>> 71d539716fa6d574752e6e615c3bf7d662c0ecc5
-		Connection connect=BD.getConn();
 		
 		@Override
 		public void add(Etudiant E){
@@ -34,9 +29,9 @@ public class EtudiantRepository  implements IEtudRep {
 		int rs = stmt.executeUpdate(sql);
 		
 		if (rs == 1){
-				System.out.println("log : ajout dans la BD réussi de l'étudiant  du Matricule" + E.getMatricule());
-			}else if (rs == 0){
-				System.out.println("log : Echec de l'ajout dans la BD de l'étudiant  du Matricule" + E.getMatricule());
+			j.outPut_Msg("log : ajout dans la BD réussi de l'étudiant  du Matricule" + E.getMatricule());
+		}else if (rs == 0){
+			j.outPut_Msg("log : Echec de l'ajout dans la BD de l'étudiant  du Matricule" + E.getMatricule());
 			}
 		BDD.getConn().close();
 	 
@@ -48,16 +43,8 @@ public class EtudiantRepository  implements IEtudRep {
  public	boolean Exists(String email){
 	try{
 
-<<<<<<< HEAD
+
 		stmt = BDD.getConn().createStatement();
-=======
-	boolean Exists(String email) throws SQLException	
-	{
-		DBConnection BD=DBConnection.getInstance();
-		Connection connect=BD.getConn();
-		
-		Statement stmt = connect.createStatement();
->>>>>>> 71d539716fa6d574752e6e615c3bf7d662c0ecc5
 		String sql = "select * from etudiant where email='"+ email+"'";
 		boolean rs = stmt.execute(sql);
 		
@@ -74,42 +61,6 @@ public class EtudiantRepository  implements IEtudRep {
 		return false;
 	}
 
-
-  @Override
-	public boolean Exists(int mat) 	
-	{
-<<<<<<< HEAD
-	  try {	
-			stmt = BDD.getConn().createStatement();
-			String sql = "select * from etudiant where matricule="+ mat;
-			boolean rs = stmt.execute(sql);
-
-			if (rs){
-				System.out.println("logBD--- :etudiant avec ce matricule existe déja dans la BD  " + mat);
-				BDD.getConn().close();
-				return true;
-				}
-			System.out.println("logBD----: etudiant avec ce matricule n'existe pas " + mat);	
-			BDD.getConn().close();
-
-			}catch(SQLException e){
-				e.printStackTrace();
-=======
-		DBConnection BD=DBConnection.getInstance();
-		Connection connect=BD.getConn();
-		
-		Statement stmt = connect.createStatement();
-		String sql = "select * from etudiant where matricule="+ mat;
-		boolean rs = stmt.execute(sql);
-		
-		if (rs){
-			System.out.println("logBD--- :etudiant avec ce matricule existe déja dans la BD  " + mat);
-			connect.close();
-			return true;
->>>>>>> 71d539716fa6d574752e6e615c3bf7d662c0ecc5
-			}
-			return false;
-			
 			@Override
 			public boolean Existe_Email_Matricule(int Matricule, String Email) {
 
@@ -125,4 +76,4 @@ public class EtudiantRepository  implements IEtudRep {
 
 
 
-}
+

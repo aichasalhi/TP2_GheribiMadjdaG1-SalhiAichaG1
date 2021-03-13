@@ -11,7 +11,7 @@ public class Etudiant implements IEtud {
 	    private int id_universite;
 	    
 	   
-	    public Etudiant(int matricule, String nom, String prenom, String email,String pwd, int id_universite, int nbLivreMensuel_Autorise,  int nbLivreEmprunte ) {
+	    public Etudiant(int matricule, String nom, String prenom, String email,String pwd, int id_universite ) {
 			
 			this.matricule = matricule;
 			this.nom = nom;

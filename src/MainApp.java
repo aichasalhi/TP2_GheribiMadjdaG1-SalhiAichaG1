@@ -6,12 +6,13 @@ public class MainApp {
 		// TODO Auto-generated method stub
 
 		DBConnection conn = DBConnection.getInstance();
+		Composite comp = new Composite();
 		Etudiant etudiant0 =new Etudiant(2, "Guendouziiiii", "wassila", "guen@gmail.com","xxxx",1);
-		IEtudRep ETUDUNIVR = new EtudiantRepository(conn);
-		IUnivRep UnivRep = new UniversiteRepository(conn);
-		EtudiantService serv = new EtudiantService(ETUDUNIVR ,UnivRep);
+		
+		IEtudRep ETUDUNIVR = new EtudiantRepository(conn, comp);
+		IUnivRep UnivRep = new UniversiteRepository(conn, comp);
+		EtudiantService serv = new EtudiantService(ETUDUNIVR ,UnivRep, comp);
 		try {
-			serv.inscription(2, "Guendouziiiii", "wassila", "guen@gmail.com","xxxx", 1,0,0);
 			serv.inscription(etudiant0, 1);
 			
 		} catch (Exception e) {
