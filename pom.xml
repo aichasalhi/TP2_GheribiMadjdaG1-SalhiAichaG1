@@ -1,9 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+<<<<<<< HEAD
   <groupId>MavenTp</groupId>
   <artifactId>MavenTp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>mon-projet-maven</name>
+=======
+  <groupId>MavenTP</groupId>
+  <artifactId>MavenTP</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+   <name>mon-projet-maven</name>
+>>>>>>> d70ed6f0ae039336cb6231572a0c9b4406cae5ab
    <url>http://maven.apache.org</url>
   <dependencies>
         <dependency>
@@ -24,6 +31,7 @@
 		    <artifactId>mssql-jdbc</artifactId>
 		    <version>6.1.0.jre8</version>
         </dependency>
+<<<<<<< HEAD
         <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -36,6 +44,10 @@
 		</dependency>
    
      </dependencies>
+=======
+
+    </dependencies>
+>>>>>>> d70ed6f0ae039336cb6231572a0c9b4406cae5ab
   <build>
     <sourceDirectory>src</sourceDirectory>
     <defaultGoal>install</defaultGoal>
